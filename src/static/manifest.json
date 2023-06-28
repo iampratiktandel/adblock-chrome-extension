@@ -2,19 +2,24 @@
   "name": "AdBlock Extension",
   "description": "Block ads on a webpage.",
   "version": "1.0.0",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
     "128": "icon.png"
   },
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "<all_urls>",
-    "*://*.googleadservices.com/*",
-    "*://*.tpc.googlesyndication.com/*"
+    "declarativeNetRequest"
   ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
   "background": {
     "service_worker": "background.js"
   },
